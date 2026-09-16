@@ -1,2 +1,2 @@
 # P4toPSP
-<img width="400" height="689" alt="immagine" src="https://github.com/user-attachments/assets/f0b17a65-e4ea-49e4-8a69-b1c1582717bf" />
+<img width="300" height="517" alt="immagine" src="https://github.com/user-attachments/assets/f0b17a65-e4ea-49e4-8a69-b1c1582717bf" />
