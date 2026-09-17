@@ -1,6 +1,7 @@
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/tojikoumori)
 # P4toPSP - *WIP*
-<img width="360" height="570" alt="default" src="https://github.com/user-attachments/assets/e1f92ee0-895e-4649-9e05-3b93eaa284bb" />
+<img width="300" height="517" alt="Senza titolo 269_20260917051917" src="https://github.com/user-attachments/assets/07a90065-9da6-440b-a80c-9d409b7347e4" />
+
 
 --------------------------------------------------
 This is an unofficial, fan-made project and is not affiliated with the original game's publisher or rights holders in any way.
