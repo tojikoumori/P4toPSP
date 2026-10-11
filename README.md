@@ -1,4 +1,4 @@
-# Shin Megami Tensei: Persona 4 PSP Port
+# Persona 4 PSP Port
 
 <img width="300" height="517" alt="Senza titolo 269_20260917051917" src="https://github.com/user-attachments/assets/07a90065-9da6-440b-a80c-9d409b7347e4" />
 
