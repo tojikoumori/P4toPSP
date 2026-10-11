@@ -11,13 +11,11 @@ All trademarks, characters, artwork, music, and other copyrighted material belon
 --------------------------------------------------
 ## Current Status / Progress
 
-*early in development* 
-
 Extracted the European PS2 game files.
 
 Built the recompilation tools needed to translate the game's code into C++.
 
-Generated thousands of C++ source files from the game's original code.
+Used PS2Recomp to translate thousands of functions from the original game's compiled code into C++ source files.
 
 Built a custom runtime to recreate some of the PS2 system functions the game expects.
 
