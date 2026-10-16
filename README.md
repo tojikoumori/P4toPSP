@@ -23,7 +23,7 @@ Got a diagnostic build past the initial kernel and memory setup.
 
 Got the PS2 I/O system to start and respond to disc-file requests.
 
-**16/10/2026 status**
+# 16/10/2026 status
 
 The game now processes its file request buffer (all 7 request entries).
 
