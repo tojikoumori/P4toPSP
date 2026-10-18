@@ -23,10 +23,23 @@ Got a diagnostic build past the initial kernel and memory setup.
 
 Got the PS2 I/O system to start and respond to disc-file requests.
 
-# 16/10/2026 status
+**16/10/2026**
 
 The game now processes its file request buffer (all 7 request entries).
 
 It performs the actual exchange with the (simulated) PS2 co-processor: it opens `DATA.CVM`, reads sector 0, and gets a status reply back.
 
-**Real data is flowing** for the first time.
+Real data is flowing for the first time.
+
+**18/10/2026**
+
+The game boots dramatically further than before. In about the first minute, it now:
+
+- **Starts its kernel threads** — like a shop hiring the staff it needs to run.
+- **Runs its co-processor traffic** — the same housekeeping commands a real PS2 sends to its input/output chip.
+- **Loads fonts and skin/texture data** out of the data archive.
+- **Grows its heap to 0xBD3000** — a real, planned-out memory footprint; the game laying down where things will live in RAM.
+- **Pumps dozens of semaphore signals between threads** — the traffic-light system threads use to take turns.
+- **Dispatches DMA work** — fast-lane memory copying, handed off instead of done by hand.
+
+And it no longer freezes or hangs. The program actually runs to completion now. The catch: it runs to the *wrong completion*. Very early, the program's main loop wanders off a cliff and "returns" with a return address that was never set (all zeros), so the harness sees "program finished, final address 0" and politely shuts everything down. What should happen instead is simple: the game keeps running, reaches the title screen, and idles there.
