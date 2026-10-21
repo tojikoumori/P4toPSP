@@ -11,35 +11,20 @@ All trademarks, characters, artwork, music, and other copyrighted material belon
 --------------------------------------------------
 ## Current Status / Progress
 
-Extracted the European PS2 game files.
+Where we stand
 
-Built the recompilation tools needed to translate the game's code into C++.
+- PC research harness: stable and useful. The recompiled game boots cleanly and runs for a minute+ with zero crashes. Fixed a long-standing crash bug (a race in the disk/machine engine).
+- A known "limbo" bug remains: the game's background jobs get stuck at one specific "loading music files" step. We found the likely culprit function and are one step from confirming. (This is polish-on-top — it no longer blocks feasibility.)
+- Hardware scan (above): the game is "chip-light" — no direct special-chip reliance.
 
-Used PS2Recomp to translate thousands of functions from the original game's compiled code into C++ source files.
+What the PSP port actually needs (feasibility short-list)
 
-Built a custom runtime to recreate some of the PS2 system functions the game expects.
+1. CPU: recompile the game's code to PSP machine code. The huge translation we already have (8,203 clean pieces) is the raw material; we need it emitted for a second kind of chip. Big but mechanical work — the process is known and already proven once.
+2. Special chips the PSP lacks: graphics, sound, and animation "spells" the PS2 cast at chips PSP doesn't have. Those each need a replacement (either software on the CPU or remapped to PSP's own hardware). That's the main design risk — new engineering, not an unsolvable mystery.
+3. Memory: the game's footprint (~19 MB of program data + the way it streams data from the disc) fits PSP's memory only if some assets are reorganized. Early numbers say "tight but possible."
+4. Disc swapping: the 4 data bundles (world, music, battles, surroundings) read currently by the harness would be plain files on the Memory Stick — that part gets easier, not harder.
 
-Got a diagnostic build past the initial kernel and memory setup.
+Honest confidence
+- Feasibility: allowing, not yet "yes" — the remaining unknowns are all on the PSP-cpu/side replacements (graphics & animation), and we haven't measured the game's steady-state FPS-style workload on a 333 MHz chip yet.
+- The PC harness is the least risky asset we hold; the groundwork behind the translation package ($8k files) is done and reusable.
 
-Got the PS2 I/O system to start and respond to disc-file requests.
-
-**16/10/2026**
-
-The game now processes its file request buffer (all 7 request entries).
-
-It performs the actual exchange with the (simulated) PS2 co-processor: it opens `DATA.CVM`, reads sector 0, and gets a status reply back.
-
-Real data is flowing for the first time.
-
-**18/10/2026**
-
-The game boots dramatically further than before. In about the first minute, it now:
-
-- **Starts its kernel threads** — like a shop hiring the staff it needs to run.
-- **Runs its co-processor traffic** — the same housekeeping commands a real PS2 sends to its input/output chip.
-- **Loads fonts and skin/texture data** out of the data archive.
-- **Grows its heap to 0xBD3000** — a real, planned-out memory footprint; the game laying down where things will live in RAM.
-- **Pumps dozens of semaphore signals between threads** — the traffic-light system threads use to take turns.
-- **Dispatches DMA work** — fast-lane memory copying, handed off instead of done by hand.
-
-And it no longer freezes or hangs. The program actually runs to completion now. The catch: it runs to the *wrong completion*. Very early, the program's main loop wanders off a cliff and "returns" with a return address that was never set (all zeros), so the harness sees "program finished, final address 0" and politely shuts everything down. What should happen instead is simple: the game keeps running, reaches the title screen, and idles there.
