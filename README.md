@@ -13,7 +13,7 @@ All trademarks, characters, artwork, music, and other copyrighted material belon
 
 ☑︎ Project direction
 
--- Code Translation -- 
+*-- Code Translation --*
 
 Built a tool that automatically converts Persona 4's original PS2 instructions into a form designed to run on the PSP.
 
