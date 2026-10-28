@@ -15,5 +15,11 @@ All trademarks, characters, artwork, music, and other copyrighted material belon
 
 -- Code Translation -- 
 
-Made a translator that converts Persona 4's original PS2 instructions into PSP-compatible code. About 76% of the game's 1.1 million code words translate directly with zero changes. The translator has reduced the share of instructions requiring special runtime help from about 19% to 1.39%. Many difficult cases can now be handled through specific rewrites, such as performing 64-bit calculations on the PSP's 32-bit processor and adapting certain memory operations. The generated code is estimated at around 5 MB, which fits the PSP's memory limit. Still needs testing
+Built a tool that automatically converts Persona 4's original PS2 instructions into a form designed to run on the PSP.
+
+The game contains about 1.1 million instructions. Around 76% can be converted directly. For instructions the PSP handles differently, the translator can rewrite them into steps the PSP can perform. This includes breaking down certain calculations and adapting how the game accesses memory.
+
+The share of instructions that still need extra helper code has dropped from about 19% to 1.39%.
+
+The generated code is estimated to be around 5 MB, which is promising for the PSP's limited memory. The translated code still needs further testing
 
