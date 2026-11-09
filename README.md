@@ -23,3 +23,10 @@ The share of instructions that still need extra helper code has dropped from abo
 
 The generated code is estimated to be around 5 MB, which is promising for the PSP's limited memory. The translated code still needs further testing
 
+----------
+
+PSP can start the port	- Achieved
+Original game instructions can execute -	Achieved
+Game reaches its own startup routines	- Achieved
+Game gets stuck waiting for a transfer - Current blocker (identified a specific missing PS2 system that the game depends on.)
+
